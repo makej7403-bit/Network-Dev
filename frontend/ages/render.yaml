@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: Network-Dev-backend
+    env: node
+    plan: free
+    repo: https://github.com/makej7403-bit/Network-Dev
+    branch: main
+    path: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: static
+    name: Network-Dev-frontend
+    plan: free
+    repo: https://github.com/makej7403-bit/Network-Dev
+    branch: main
+    path: frontend
+    buildCommand: npm install && npm run build
+    publishPath: build
